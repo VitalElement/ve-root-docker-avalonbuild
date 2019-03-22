@@ -1,0 +1,18 @@
+version: "2"
+services:
+  avalonbuild:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: vitalelement/avalonbuildvsts:latest
+    volumes:
+      - ${BASE}:/work
+      - ./entrypoint.sh:/entrypoint.sh
+      - ../../docker-ve-root.sh:/docker-ve-root.sh
+    hostname: ve-root
+    working_dir: /work
+    entrypoint: /entrypoint.sh
+    stdin_open: true
+    tty: true
+    privileged: true
+
